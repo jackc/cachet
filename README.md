@@ -7,3 +7,25 @@ CacheT is a tiny, generic cache. It was initially designed to assist with live r
 while caching them in production.
 
 ## Example Usage
+
+```go
+value := 0
+isStale := false
+cache := cachet.Cache[int]{
+  Load: func() (int, error) {
+    value++
+    return value, nil
+  },
+  IsStale: func() (bool, error) {
+    return isStale, nil
+  },
+}
+
+cache.MustGet() // => 1
+cache.MustGet() // => 1
+isStale = true
+cache.MustGet() // => 2
+cache.MustGet() // => 3
+isStale = false
+cache.MustGet() // => 3
+```
