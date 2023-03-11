@@ -3,4 +3,7 @@
 
 # CacheT
 
-CacheT is a simple cache for all your `T`s. That is, it is a generic cache.
+CacheT is a tiny, generic cache. It was initially designed to assist with live reloading HTML templates in development
+while caching them in production.
+
+## Example Usage
